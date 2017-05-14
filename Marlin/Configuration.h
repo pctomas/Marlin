@@ -487,7 +487,9 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {45.0066,45.28257,1588.089,236.23}
+ // default steps per unit for RigidBot with standard hardware
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 44.3090, 22.1545, 1600, 53.5 }
+// default steps for 16-tooth pulleys { 100.06, 50.06, 1600, 76 } // HPX2-MAX E=504, RigidBot E=53.5, Peter Stoneham's=76
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -512,9 +514,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          900    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
+ #define DEFAULT_ACCELERATION          600     // X, Y, Z and E acceleration for printing moves
+ #define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
+ #define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk (mm/s)
@@ -524,10 +526,10 @@
  * When changing speed and direction, if the difference is less than the
  * value set here, it may happen instantaneously.
  */
-#define DEFAULT_XJERK                  5.0
-#define DEFAULT_YJERK                  5.0
-#define DEFAULT_ZJERK                  0.4
-#define DEFAULT_EJERK                  5.0
+ #define DEFAULT_XJERK                 8.0
+ #define DEFAULT_YJERK                 8.0
+ #define DEFAULT_ZJERK                 0.4
+ #define DEFAULT_EJERK                 5.0
 
 
 //===========================================================================
@@ -544,7 +546,7 @@
  *
  * Enable this option for a probe connected to the Z Min endstop pin.
  */
-#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 /**
  * Z_MIN_PROBE_ENDSTOP
@@ -566,7 +568,7 @@
  *
  */
 //#define Z_MIN_PROBE_ENDSTOP
-//#define Z_MIN_PROBE_PIN Z_MAX_PIN
+#define Z_MIN_PROBE_PIN Z_MAX_PIN
 
 /**
  * Probe Type
@@ -586,7 +588,7 @@
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
  *   (e.g., an inductive probe or a nozzle-based probe-switch.)
  */
-//#define FIX_MOUNTED_PROBE
+#define FIX_MOUNTED_PROBE
 
 /**
  * Z Servo Probe, such as an endstop switch on a rotating arm.
@@ -805,7 +807,7 @@
  *   leveling in steps so you can manually adjust the Z height at each grid-point.
  *   With an LCD controller the process is guided step-by-step.
  */
-//#define AUTO_BED_LEVELING_3POINT
+#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
 //#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
@@ -940,7 +942,7 @@
 // - If stepper drivers time out, it will need X and Y homing again before Z homing.
 // - Move the Z probe (or nozzle) to a defined XY point before Z Homing when homing all axes (G28).
 // - Prevent Z homing when the Z probe is outside bed area.
-//#define Z_SAFE_HOMING
+#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT ((X_MIN_POS + X_MAX_POS) / 2)    // X point for Z homing when homing all axis (G28).
